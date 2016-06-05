@@ -9,42 +9,71 @@ public class ConfigurationHandler extends DefaultHandler {
 	int vornamePos;
 	int nachnamePos;
 	int geschlechtPos;
-	int counter = 0;
+	int counter = 1;
+
+	public int getIdPos() {
+		return idPos;
+	}
+
+	public int getVornamePos() {
+		return vornamePos;
+	}
+
+	public int getNachnamePos() {
+		return nachnamePos;
+	}
+
+	public int getGeschlechtPos() {
+		return geschlechtPos;
+	}
 
 	public void startDocument() {
 		System.out.println("Dokumentenstart");
 	}
 
-	public void startElement(String uri, String localName, String qualName, Attributes attributes) {
+	public void startElement(String uri, String localName, String qualName,
+			Attributes attributes) {
 
 		System.out.println("Start-Tag: " + qualName);
 		for (int i = 0; i < attributes.getLength(); i++) {
-			System.out.println("Attribut: " + attributes.getQName(i) + " = " + attributes.getValue(i));
+			System.out.println("Attribut: " + attributes.getQName(i) + " = "
+					+ attributes.getValue(i));
 
 			if (qualName.equals("field")) {
 				System.out.println("field found");
-				if (attributes.getQName(i).equals("name") && attributes.getValue(i).equals("id")) {
+				if (attributes.getQName(i).equals("name")
+						&& attributes.getValue(i).equals("id")) {
 					this.idPos = counter;
-					System.out.println("ID befindet sich an " + this.idPos + ". Stelle");
+					System.out.println("ID befindet sich an " + this.idPos
+							+ ". Stelle");
 					counter++;
-				} else if (attributes.getQName(i).equals("name") && attributes.getValue(i).equals("vorname")) {
+				} else if (attributes.getQName(i).equals("name")
+						&& attributes.getValue(i).equals("vorname")) {
 					this.vornamePos = counter;
-					System.out.println("Vorname befindet sich an " + this.idPos + ". Stelle");
+					System.out.println("Vorname befindet sich an "
+							+ this.vornamePos + ". Stelle");
 					counter++;
-				} else if (attributes.getQName(i).equals("name") && attributes.getValue(i).equals("nachname")) {
+				} else if (attributes.getQName(i).equals("name")
+						&& attributes.getValue(i).equals("nachname")) {
 					this.nachnamePos = counter;
-					System.out.println("Nachname befindet sich an " + this.idPos + ". Stelle");
+					System.out.println("Nachname befindet sich an "
+							+ this.nachnamePos + ". Stelle");
 					counter++;
-				} else if (attributes.getQName(i).equals("name") && attributes.getValue(i).equals("geschlecht")) {
+				} else if (attributes.getQName(i).equals("name")
+						&& attributes.getValue(i).equals("geschlecht")) {
 					this.geschlechtPos = counter;
-					System.out.println("Geschlecht befindet sich an " + this.idPos + ". Stelle");
+					System.out.println("Geschlecht befindet sich an "
+							+ this.geschlechtPos + ". Stelle");
 					counter++;
+
 				}
+
 			}
 
 		}
 		if (qualName.equals("info")) {
-			Configuration.addConfiguration(attributes.getValue(0), attributes.getValue(1));
+			Configuration.addConfiguration(attributes.getValue(0),
+					attributes.getValue(1));
 		}
 
 	}
@@ -60,7 +89,6 @@ public class ConfigurationHandler extends DefaultHandler {
 	public void endElement(String uri, String localName, String qualName) {
 		System.out.println("End-Tag: " + qualName);
 		System.out.println();
-
 	}
 
 	public void endDocument() {

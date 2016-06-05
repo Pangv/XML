@@ -17,9 +17,11 @@ public class CallSAX {
 	private static SAXParserFactory factory;
 	private static XMLReader xmlReader;
 	private static SAXParser saxParser;
+	
+	private final String FILE_SEPERATOR = File.separator;
 
 	public void setFilename(String filename) {
-		this.filename = "assets\\" + filename;
+		this.filename = "assets" + FILE_SEPERATOR + filename;
 	}
 
 	public String getFilename() {

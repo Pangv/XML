@@ -31,15 +31,15 @@ public class ReportApp {
 		strukturdatei_1.setFilename(jfc.getSelectedFile().getName());
 		strukturdatei_1.parseXMLDocument();
 		
-		jfc.showOpenDialog(null);
-		strukturdatei_2.setFilename(jfc.getSelectedFile().getName());
-		strukturdatei_2.parseXMLDocument();
-		
+//		jfc.showOpenDialog(null);
+//		strukturdatei_2.setFilename(jfc.getSelectedFile().getName());
+//		strukturdatei_2.parseXMLDocument();
+//		
 		
 		Configuration.getConfigurations();
 		
 		
-		Person.comparePerson(Person.personen_in_A.get(0), Person.personen_in_B.get(0));
+//		Person.comparePerson(Person.personen_in_A.get(0), Person.personen_in_B.get(0));
 		
 		
 		InputHandler.closeReaders();
